@@ -1,0 +1,394 @@
+
+
+.nav{
+
+
+	width: 100%;
+	height: 77px;
+	border-bottom:1px solid rgb(207,207,207);
+	box-shadow: 0 0 0 2px #eee;
+}
+
+.dnav{
+	cursor: pointer;
+}
+
+.nav .content{
+	width: 1000px;
+	margin: 0 auto;
+	height: 77px;
+	line-height: 77px;
+}
+
+.nav .content img{
+	float: left;
+}
+
+.nav .navlist{
+	line-height: 77px;
+	float: left;
+	display: block;
+	width: 88px;
+	text-align: center;
+	color: rgb(108,108,108);
+	font-size: 20px;
+
+}
+.nav .navlist.hover{
+	color:rgb(254,83,65);
+}
+
+
+
+.nav .signin{
+	display: block;
+	float: right;
+	font-size: 18px;
+	margin-top: 18px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 15px;
+	border: 1px solid rgb(254,83,65);
+	color: rgb(254,83,65);
+	border-radius: 5px;
+}
+
+.section{
+	padding-top: 50px;
+}
+
+.section h3{
+	font-size: 40px;
+	text-align: center;
+}
+
+.list{
+	text-align: center;
+	margin-top: 30px;
+}
+
+.list .x{
+	border: 1px solid rgb(163,163,163);
+	font-size: 16px;
+	color: rgb(163,163,163);
+	border-radius: 4px;
+	line-height: 20px;
+	padding: 0px 0px 0px 10px;
+	height: 20px;
+	margin-left: 8px;
+	display: inline-block;
+}
+.list .ox{
+	border: 1px solid rgb(254,83,65);
+	font-size: 16px;
+	color: rgb(254,83,65);
+	border-radius: 4px;
+	line-height: 20px;
+	padding:0 0 0 10px;
+	height: 20px;
+	margin-left: 8px;
+	display: inline-block;
+}
+.borderspan{
+	border-left: 2px solid rgb(163,163,163);
+}
+
+.xSpan{  
+	background-color: rgb(254,83,65);
+	color: white;
+	display: inline-block;
+	border-left: 2px solid rgb(254,83,65)
+}
+.xoSpan{
+	color: rgb(163,163,163);
+	display: inline-block;
+
+}
+
+.sliders{
+	margin-top: 30px;
+	height: 400px;
+}
+
+.slider, .info{
+	display: block;
+	height: 400px;
+	float: left;
+}
+
+.slider{
+	width: 750px;
+}
+
+.info{
+	width: 350px;
+}
+
+.info h4{
+	line-height: 130px;
+	font-size: 40px;
+	color: rgb(254,83,65);
+	font-weight: normal;
+	padding: 0 30px;	
+}
+
+.info .btn{
+	padding-left: 30px;
+
+}
+
+.info .btn .button{
+	width: 270px;
+	height: 48px;
+	display: block;
+	background-color: rgb(254,83,65);
+	color: #fff;
+	text-align: center;
+	font-size: 20px;
+	line-height: 48px;
+	border-radius: 5px;
+}
+.info .buy{
+	padding-left: 30px;
+	font-size: 14px;
+	color:rgb(163,163,163);
+	margin-top: 50px;
+	margin-bottom: 66px;
+	width:270px;
+}
+.info .buy span:first{
+	float:left;
+}
+.info .buy .rightspan{
+	float: right;
+	display: inline-block;
+
+
+}
+.info .like{
+	color:rgb(163,163,163);
+	font-size: 14px;
+	margin-left: 30px;
+	width: 270px;
+	overflow: hidden;
+	padding-top: 25px;
+	padding-bottom:20px;
+	border-top: 1px solid rgb(254,83,65); 
+	border-bottom: 1px solid rgb(254,83,65); 
+
+}
+.like .fa{
+	color:rgb(163,163,163);
+	font-size: 25px;
+	float: left;
+}
+.likediv{
+	float: left;
+	margin-left: 35px;
+}
+.sharediv{
+	float: right;
+	margin-right: 35px
+}
+.like span{
+	padding: 4px 0px;
+	margin-left: 10px;
+	float: left;
+}
+.like>div{
+	display: inline-block;
+}
+.details{
+	width:1070px;
+	padding-left: 30px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.details div{
+	font-size: 20px;
+	width:180px;
+	height:100px;
+	color:rgb(163,163,163);
+	line-height: 100px;
+	text-align: center;
+	float:left;
+}
+.hiddenA{
+	width:100%;
+	clear:both;
+	background-color: rgb(247,247,247);
+	padding-top: 30px;
+}
+.hiddenA>div{
+	width: 1100px;
+	margin:0 auto;
+}
+.hiddenA h3{
+	font-size: 20px;
+	padding: 25px;
+}
+.hiddenA h3+p{
+	font-size: 15px;
+	color:rgb(163,163,163);
+	padding-left: 25px;
+	word-wrap:normal;
+}
+.prodetails{
+	background-color: white;
+	padding-top: 22px;
+	border-radius: 5px;
+}
+.prodetails h2{
+	font-size: 20px;
+	border-left:6px solid rgb(254,83,65);
+	text-indent:20px; 
+}
+.prodetails h2 span{
+	font-size: 17px;
+	margin-right: 25px;
+	color:rgb(163,163,163);
+	float: right;
+}
+.prodetails .detailscontent{
+	padding-top: 25px;
+	padding-left: 25px;
+	font-size: 16px;
+	height: 100px;
+	float: left;
+	overflow: hidden;
+}
+.gradient{
+	width: 750px;
+	float: left;
+	height: 105px;
+	margin-top: -100px;
+	background-color: white;
+	background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+}
+.showcontent{
+	border-top: 1px dashed rgb(163,163,163);
+	clear: both;
+    padding:25px 0;
+}
+.showcontent div{
+	color:rgb(163,163,163);
+	font-size: 15px;
+	text-align: center;
+
+}
+.look{
+	width: 650px;
+	margin: 30px auto 0;
+}
+.look textarea{
+	display: block;
+    width: 100%;
+	height: 100px;
+    background-color: rgb(247,247,247);
+	border-radius: 8px;
+	padding: 15px;
+	color:rgb(163,163,163);
+	outline: none;
+}
+.look button{
+	width: 120px;
+	height: 37px;
+	line-height: 37px;
+	border: 0;
+	border-radius: 5px;
+	color: white;
+	background-color:rgb(254,83,65);
+	text-align: center;
+	font-size: 22px;
+	float: right;
+	margin-top: 15px; 
+}
+.hiddenA .pl{
+	height: 250px;
+	border-bottom: 1px dashed rgb(163,163,163);
+} 
+.userdis{
+	clear:both;
+	padding: 20px 20px 10px 20px;
+	width: 710px;
+	border-bottom: 1px dashed rgb(163,163,163);
+	background-color: white;
+}
+.userdis img{
+	float: left;
+}
+.userdis .userinf{
+	margin-left: 90px;
+}
+.userdis h4{
+	color:rgb(254,83,65);
+	font-size: 16px;
+	margin-bottom: 9px;
+}
+.userdis h4 span{
+	float: right;
+	color:rgb(163,163,163);
+	font-size: 14px;
+	margin-right: 20px;
+	font-weight: normal;
+}
+.userdis p{
+	font-size: 17px;
+}
+.userdis .fa{
+	font-size: 20px;
+	 color:rgb(163,163,163);
+}
+.zandiv{
+	margin-top: 25px;
+	margin-left: 660px;
+
+}
+.zandiv span{
+	margin-left: 5px;
+	font-size: 15px;
+	color: rgb(163,163,163);
+}
+.prodetails .left,.left img,.left span{
+	float: left;
+}
+.left span{
+	margin-left: 10px;
+}
+.prodetails .right{
+	float: right;
+}
+
+.womenx{
+	overflow: hidden;
+	padding-left: 25px;
+	padding-bottom: 30px;
+	border-bottom: 1px dashed rgb(163,163,163);
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
