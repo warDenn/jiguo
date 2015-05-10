@@ -9,6 +9,10 @@
 	box-shadow: 0 0 0 2px #eee;
 }
 
+.raise{
+	cursor: pointer;
+}
+
 .dnav{
 	cursor: pointer;
 }
@@ -77,6 +81,8 @@
 	height: 20px;
 	margin-left: 8px;
 	display: inline-block;
+	cursor: pointer;
+
 }
 .list .ox{
 	border: 1px solid rgb(254,83,65);
@@ -162,8 +168,10 @@
 .info .buy .rightspan{
 	float: right;
 	display: inline-block;
-
-
+}
+.buy li{
+	font-size: 15px;
+	margin-left: 10px;
 }
 .info .like{
 	color:rgb(163,163,163);
@@ -177,8 +185,12 @@
 	border-bottom: 1px solid rgb(254,83,65); 
 
 }
+
+.redlike{
+	color: rgb(254,83,65)!important;
+}
+
 .like .fa{
-	color:rgb(163,163,163);
 	font-size: 25px;
 	float: left;
 }
@@ -204,7 +216,7 @@
 	margin: 0 auto;
 	overflow: hidden;
 }
-.details div{
+.dnav{
 	font-size: 20px;
 	width:180px;
 	height:100px;
@@ -349,14 +361,29 @@
 	font-size: 15px;
 	color: rgb(163,163,163);
 }
-.prodetails .left,.left img,.left span{
+.prodetails .left img,.left span{
 	float: left;
 }
 .left span{
 	margin-left: 10px;
+	line-height: 24px;
+	color:rgb(163,163,163);
 }
 .prodetails .right{
 	float: right;
+}
+.right>li,.right>span{
+	float: left;
+	color:rgb(163,163,163);
+
+}
+.right>li{
+	margin-right: 10px;
+}
+.right>span{
+	line-height: 20px;
+	margin-right: 15px;
+	font-size: 16px;
 }
 
 .womenx{
@@ -366,7 +393,10 @@
 	border-bottom: 1px dashed rgb(163,163,163);
 	margin-top: 10px;
 }
-
+.womenx li{
+	color:rgb(163,163,163);
+	font-size: 20px;
+}
 
 
 

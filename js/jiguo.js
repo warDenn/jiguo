@@ -1,56 +1,130 @@
-void function(){
-
-    var body = $("body");
-
-    body.on("click", ".dnav", function(){
-
-        var classname = $(this).attr("data-id");
-
-        $("#"+classname).show().siblings(".hiddenA").hide();
-        $(this).addClass("navcurrent").siblings().removeClass("navcurrent");
-        console.log($("."+classname))
-
-    });
+angular.module('jiguoApp', []).controller('jiguo', function($scope) {
 
 
-    var template = '\
-        <div id="fatherDis0" class="userdis">\
-            <img src="images/head.jpg">\
-            <h4 class="userinf">{{name}}<span>{{time}}</span></h4>\
-            <p class="userinf">{{content}}</p>\
-            <div class="zandiv"><i class="fa fa-thumbs-o-up"></i><span>{{fav}}</span></div>\
-        </div>';
+    $scope.detail = true;
+    $scope.report = false;
+    $scope.comment = false;
 
-
-    var tmpl = Handlebars.compile(template);
-
-    var data = {
+    $scope.comments = [{
         name:"小石头",
-        time:"刚刚",
-        content:"",
-        fav: 0
+        text:"乔布斯附体乔布斯附体乔布斯附体乔布斯附体乔布斯附体乔布斯附体",
+        time:"1天前",
+        fav:0
+    }];
+
+
+    $scope.newcomment = function(){
+
+        var text = $scope.commenttext;
+
+        var instance = {};
+
+        instance.name = "小石头";
+        instance.text = text;
+        instance.time = "刚刚";
+        instance.fav  = 0;
+
+        $scope.comments = [instance].concat($scope.comments);
+        $scope.commenttext = "";
     };
 
+    $scope.add = function(index){
+
+        $scope.comments[index].fav++;
+    };
+
+});
+
+
+void function(){
+
+
+
+    // var body = $("body");
+
+    // body.on("click", ".dnav", function(){
+
+    //     var classname = $(this).attr("data-id");
+
+    //     $("#"+classname).show().siblings(".hiddenA").hide();
+    //     $(this).addClass("navcurrent").siblings().removeClass("navcurrent");
+    //     console.log($("."+classname))
+
+    // });
+
+    // body.on("click",".raise",function(){
+
+    //     var preText=$(this).next().text();
+
+    //     var num=parseInt(preText);
+
+    //     if(num||num==0){
+    //         num++;
+    //         $(this).next().text(num);
+    //     }else{
+            
+    //         var num=preText.slice(4);
+
+    //         var text=preText.slice(0,4);
+
+    //         if(num==""){
+    //             var num=0;
+    //             }
+
+    //         var newnum=Number(num);
+
+    //         newnum++;
+            
+    //         $(this).next().text("");
+
+    //         $(this).next().text(text+newnum);
+
+    //         $(this).parent().children().css({"color":"rgb(254,83,65)"});
+
+    //         }
+
+    //     }
+    // );
+
+
+    // var template = '\
+    //     <div id="fatherDis0" class="userdis">\
+    //         <img src="images/head.jpg">\
+    //         <h4 class="userinf">{{name}}<span>{{time}}</span></h4>\
+    //         <p class="userinf">{{content}}</p>\
+    //         <div class="zandiv"><i class="fa fa-thumbs-o-up"></i><span>{{fav}}</span></div>\
+    //     </div>';
+
+
+    // var tmpl = Handlebars.compile(template);
+
+    // var data = {
+    //     name:"小石头",
+    //     time:"刚刚",
+    //     content:"",
+    //     fav: 0
+    // };
+
     
-    var textarea = $(".look textarea");
+    // var textarea = $(".look textarea");
 
-    body.on("click", ".look button", function(){
+    // body.on("click", ".look button", function(){
 
-        var text = textarea.val(), html;
+    //     var text = textarea.val(), html;
         
-        data.content = text;
+    //     data.content = text;
 
-        html = tmpl(data);
+    //     html = tmpl(data);
 
-        if(data.content ==""){
-            return;
-        }
+    //     if(data.content ==""){
+    //         return;
+    //     }
 
-        $(html).insertBefore($(".userdis").first());
+    //     $(html).insertBefore($(".userdis").first());
 
-        textarea.val("");
+    //     textarea.val("");
 
-    });
+    // });
 
     // $("#showDetails").click(function(){
     //     $(".detailscontent").css({"height":"","overflow":"visible"});

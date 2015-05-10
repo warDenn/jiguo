@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="jiguoApp">
 <head>
 	<title></title>
 	<meta charset="utf-8">
@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <link rel="stylesheet" type="text/css" href="css/jiguo.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<script type="text/javascript" src="js/angular.min.js"></script>
+
 <style type="text/css">
 /*swiper插件 在网页商品图片处可滑动浏览*/
  .swiper-container {
@@ -36,11 +38,18 @@
 }
 
 .navcurrent{
-	color:rgb(254,83,65);border-bottom:3px solid rgb(254,83,65);
+	color:rgb(254,83,65);
+	border-bottom:3px solid rgb(254,83,65);
+}
+.listcurrent{
+	color:rgb(254,83,65);border-bottom:3px solid rgb(254,83,65)
+}
+.orangecolor{
+	color:rgb(254,83,65);
 }
 
 </style>
-<body>
+<body ng-controller="jiguo">
 
 	<div class="nav">
 		<div class="content">
@@ -61,13 +70,26 @@
 	<div class="section center">
 		<h3>Ninebot 9号平衡车</h3>
 		<div class="list">
-			<div class="x">  <span>超级防水</span> <span class="borderspan">12</span></div>
-			<div class="x">  <span>超级防水</span> <span class="borderspan">12</span></div>
-			<div class="x">  <span>超级防水</span> <span class="borderspan">12</span></div>
-			<div class="x">  <span>超级防水</span> <span class="borderspan">12</span></div>
-			<div class="x">  <span>超级防水</span> <span class="borderspan">12</span></div>
-			<div class="x">  <span>超级防水</span> <span class="borderspan">12</span></div>
-			<div class="x">  <span>超级特别尤其防水</span>  <span class="borderspan">12</span></div>
+			<div class="x {{index1 && 'ox'}}" ng-click="index1=!index1">
+				<span>超级防水</span> <span class="borderspan {{index1 && 'xSpan'}}">12</span>
+			</div>
+			<div class="x {{index2 && 'ox'}}" ng-click="index2=!index2">
+				<span>超级防水</span> <span class="borderspan {{index2 && 'xSpan'}}">12</span>
+			</div>
+			<div class="x {{index3 && 'ox'}}" ng-click="index3=!index3">
+				<span>超级防水</span> <span class="borderspan {{index3 && 'xSpan'}}">12</span>
+			</div>
+			<div class="x {{index4 && 'ox'}}" ng-click="index4=!index4">
+				<span>超级防水</span> <span class="borderspan {{index4 && 'xSpan'}}">12</span>
+			</div>
+			<div class="x {{index5 && 'ox'}}" ng-click="index5=!index5">
+				<span>超级防水</span> <span class="borderspan {{index5 && 'xSpan'}}">12</span>
+			</div>
+			<div class="x {{index6 && 'ox'}}" ng-click="index6=!index6">
+				<span>超级防水</span> <span class="borderspan {{index6 && 'xSpan'}}">12</span>
+			</div>
+			<div class="x {{index7 && 'ox'}}" ng-click="index7=!index7">  
+			<span>超级特别尤其防水</span>  <span class="borderspan {{index7  && 'xSpan'}}">12</span></div>
 		</div>
 	</div>
 	<div class="sliders center">
@@ -114,69 +136,36 @@
 			</div>
 		    <div class="buy">
 		    	<span>来自亚马逊</span>
-		    	<span class="rightspan">其他购买方式</span>
+		    	<span class="rightspan raise">其他购买方式<li class="fa fa-sort-desc"></li></span>
 		    </div>	
 		    <div class="like">
-		    	<div class="likediv"><i class="fa fa-heart"></i><span>喜欢</span></div>
-		    	<div class="sharediv"><i class="fa fa-share-alt"></i><span>分享</span></div>
+		    	<div class="likediv raise" ng-init="like=0" ng-click="like=like+1;toLike=true">
+		    	<i class="fa fa-heart {{toLike && 'orangecolor'}}"></i>
+		    	<span class="{{toLike && 'orangecolor'}}">喜欢&nbsp;&nbsp;{{like}}</span>
+		    	</div>
+		    	<div class="sharediv raise"><i class="fa fa-share-alt raise"></i><span>分享</span></div>
 		    </div>
 		</div>	
 	</div>
 	<div class="details">
-		<div class="dnav navcurrent" data-id="deatail" data-a="asdasd" style="">产品详情</div>
-		<div class="dnav" data-id="report">体检报告(25)</div>
-		<div class="dnav" data-id="comment">评论(46)</div>
+		<div class="dnav {{detail?'navcurrent':''}}" ng-click="detail=true;report=false;comment=false">产品详情</div>
+		<div class="dnav {{report?'navcurrent':''}}" ng-click="report=true;detail=false;comment=false">体检报告(25)</div>
+		<div class="dnav {{comment?'navcurrent':''}}" ng-click="report=false;detail=false;comment=true">评论({{comments.length}})</div>
 	</div>
-	<div class="hiddenA" id="deatail" style="display:block">
+	<div class="hiddenA" ng-show="detail">
 		<div>
 			<div class="prodetails equalwidth">
 				<h2>产品详情</h2>
 				<img src="images/prodetails.jpg" width="750px" style="margin-top:22px">
-				<p class="detailscontent" style="height:105px;float:left">让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候sss身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，sss有了它，</p>
-				<p class="gradient"></p>
-				<div class="showcontent" id="showDetails">
-					<div><span>展开产品详情</span><img src="images/show.jpg"></div>
-				</div>
-			</div>
-			<div class="prodetails equalwidth">
-				<h2>产品详情</h2>
-				<img src="images/prodetails.jpg" width="750px" style="margin-top:22px">
-				<p class="detailscontent" style="height:105px;float:left">让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候sss身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，sss有了它，</p>
-				<p class="gradient"></p>
-				<div class="showcontent" id="showDetails">
-					<div><span>展开产品详情</span><img src="images/show.jpg"></div>
-				</div>
-			</div>
-			<div class="prodetails equalwidth">
-				<h2>产品详情</h2>
-				<img src="images/prodetails.jpg" width="750px" style="margin-top:22px">
-				<p class="detailscontent" style="height:105px;float:left">让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候sss身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，sss有了它，</p>
-				<p class="gradient"></p>
-				<div class="showcontent" id="showDetails">
-					<div><span>展开产品详情</span><img src="images/show.jpg"></div>
-				</div>
-			</div>
-			<div class="prodetails equalwidth">
-				<h2>产品详情</h2>
-				<img src="images/prodetails.jpg" width="750px" style="margin-top:22px">
-				<p class="detailscontent" style="height:105px;float:left">让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候sss身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，sss有了它，</p>
-				<p class="gradient"></p>
-				<div class="showcontent" id="showDetails">
-					<div><span>展开产品详情</span><img src="images/show.jpg"></div>
-				</div>
-			</div>
-			<div class="prodetails equalwidth">
-				<h2>产品详情</h2>
-				<img src="images/prodetails.jpg" width="750px" style="margin-top:22px">
-				<p class="detailscontent" style="height:105px;float:left">让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候sss身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，sss有了它，</p>
-				<p class="gradient"></p>
-				<div class="showcontent" id="showDetails">
-					<div><span>展开产品详情</span><img src="images/show.jpg"></div>
+				<p class="detailscontent" style="height:{{content?'auto':'105px'}};float:left">让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候sss身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，有了它，让你更了解自己的健康手环：37度Light 。除了能实时记录健康状态外，还能进行分析解读并告诉你什么时候身体状态最佳，sss有了它，</p>
+				<p class="gradient" ng-show="!content"></p>
+				<div class="showcontent" id="showDetails" ng-show="!content">
+					<div ng-click="content=true"><span>展开产品详情</span><img src="images/show.jpg"></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="hiddenA" id="report" style="display:none">
+	<div class="hiddenA" ng-show="report">
 		<div>
 			<div class="prodetails equalwidth">
 				<h2>体验报告 <span>撰写报告</span></h2>
@@ -185,87 +174,85 @@
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like1=24" ng-click="like1=like1+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like1}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
 			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
 				<h3>WithThings Activite智能手表</h3>
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like2=24" ng-click="like2=like2+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like2}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
 			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
 				<h3>WithThings Activite智能手表</h3>
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like2=24" ng-click="like2=like2+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like2}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
 			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
 				<h3>WithThings Activite智能手表</h3>
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like3=24" ng-click="like3=like3+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like3}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
 			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
 				<h3>WithThings Activite智能手表</h3>
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like4=24" ng-click="like4=like4+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like4}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
 			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
 				<h3>WithThings Activite智能手表</h3>
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like5=24" ng-click="like5=like5+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like5}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
 			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
 				<h3>WithThings Activite智能手表</h3>
 			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
 			    <div class="womenx">
 			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
+			    	<div class="right"><li ng-init="like6=24" ng-click="like6=like6+1" class="fa fa-thumbs-o-up raise"></li><span style="margin-right:10px">{{like6}}</span>
+			    	<li class="fa fa-comment-o raise"></li><span>0</span></div>			    	
 			    </div>
-			    <img src="images/report.jpg" width="750px" style="margin-top:22px">
-				<h3>WithThings Activite智能手表</h3>
-			    <p>LightAir空气净化器是全球第一款做到无耗材的空气净化器，造型简约，净化效果出众，超静音和帝和低耗能的设计。</p>
-			    <div class="womenx">
-			    	<div class="left"><img src="images/woman.jpg"><span style="color:rgb(254,83,65);">西贝心合</span><span>2014-12-12</span></div>
-			    	<div class="right"><img src="images/zan.jpg"><span style="margin-right:10px">24</span><img src="images/xiaoxi.jpg"><span>0</span></div>			    	
-			    </div>
-			    
-			    <div class="showcontent" id="showDetails">
+			    <div class="showcontent" id="showDetails raise">
 					<div><span>查看更多</span></div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="hiddenA" id="comment" style="display:none">
+	<div class="hiddenA" ng-show="comment">
 		<div id="yourdiv">
 			<div class="prodetails equalwidth pl">
-				<h2>评论</h2>
+				<h2>{{comments.length}}条评论</h2>
 				<div class="look">
-					<textarea rows="4" placeholder="写下你的评论吧~写入内容点击发布即可产生新的评论"></textarea>
-					<button>发布</button>
+					<textarea rows="4" ng-model="commenttext" placeholder="写下你的评论吧~写入内容点击发布即可产生新的评论"></textarea>
+					<button class="raise" ng-click="newcomment()">发布</button>
 				</div>
 			</div>
-			<div id="fatherDis0" class="userdis">
+			<div id="fatherDis0" class="userdis" ng-repeat="(index, c) in comments">
 					<img src="images/head.jpg">
-					<h4 class="userinf">小石头<span>1天前</span></h4>
-				    <p class="userinf">乔布斯附体乔布斯附体乔布斯附体乔布斯附体乔布斯附体乔布斯附体</p>
-				    <div class="zandiv"><i class="fa fa-thumbs-o-up"></i><span>0</span></div>
+					<h4 class="userinf">{{c.name}}<span>{{c.time}}</span></h4>
+				    <p class="userinf">{{c.text}}</p> 
+				    <div class="zandiv"><i class="fa fa-thumbs-up raise {{c.fav > 0 ? 'redlike':''}}" ng-click="add(index)"></i><span>{{c.fav}}</span></div>
 			</div>
 		</div>
 	</div>
 
 
 
-	<script type="text/javascript" src="js/jq.js"></script>
-	<script type="text/javascript" src="js/handlebars.js"></script>
 	<script type="text/javascript" src="js/jiguo.js"></script>
+	<script type="text/javascript" src="js/swiper.js"></script>
 	<script>
 		var swiper = new Swiper('.swiper-container');
 	</script>
